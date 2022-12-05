@@ -1,4 +1,4 @@
-package main
+package day01
 
 import (
 	"fmt"
@@ -55,9 +55,10 @@ func Part2(data []string) int {
 	return total_calories
 }
 
-func main() {
+func Main() {
 	data := utils.ReadPuzzleData(DAY)
 
+	fmt.Println("Day", DAY)
 	fmt.Println("Part 1:", Part1(data))
 	fmt.Println("Part 2:", Part2(data))
 }
