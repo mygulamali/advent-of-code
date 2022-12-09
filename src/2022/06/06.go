@@ -6,24 +6,24 @@ import (
 	"gulamali.net/src/2022/utils"
 )
 
-var DAY = 6
+var Day = 6
 
 func findMarker(data string, width int) int {
 	for i := 0; i < len(data) - width; i++ {
-		char_map := map[string]int{}
+		charMap := map[string]int{}
 
 		for j := 0; j < width; j++ {
 			char := string(data[i + j])
-			_, exists := char_map[char]
+			_, exists := charMap[char]
 
 			if exists {
-				char_map[char] += 1
+				charMap[char] += 1
 			} else {
-				char_map[char] = 1
+				charMap[char] = 1
 			}
 		}
 
-		if len(char_map) == width {
+		if len(charMap) == width {
 			return i + width
 		}
 	}
@@ -39,9 +39,9 @@ func Part2(data string) int {
 }
 
 func Main() {
-	data := utils.ReadPuzzleData(DAY)
+	data := utils.ReadPuzzleData(Day)
 
-	fmt.Println("Day", DAY)
+	fmt.Println("Day", Day)
 	fmt.Println("Part 1:", Part1(data[0]))
 	fmt.Println("Part 2:", Part2(data[0]))
 }

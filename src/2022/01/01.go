@@ -8,57 +8,57 @@ import (
 	"gulamali.net/src/2022/utils"
 )
 
-var DAY = 1
+var Day = 1
 
 func Part1(data []string) int {
-    total_calories := 0
-    max_calories := -1
+    totalCalories := 0
+    maxCalories := -1
 
 	for _, line := range data {
 		if line == "" {
-			if total_calories >= max_calories {
-				max_calories = total_calories
+			if totalCalories >= maxCalories {
+				maxCalories = totalCalories
 			}
-			total_calories = 0
+			totalCalories = 0
 			continue
 		}
 
 		calories, _ := strconv.Atoi(line)
-		total_calories += calories
+		totalCalories += calories
 	}
 
-	return max_calories
+	return maxCalories
 }
 
 func Part2(data []string) int {
-    grouped_calories := []int {0}
+    groupedCalories := []int {0}
     counter := 0
 
 	for _, line := range data {
 		if line == "" {
 			counter += 1
-			grouped_calories = append(grouped_calories, 0)
+			groupedCalories = append(groupedCalories, 0)
 			continue
 		}
 
 		calories, _ := strconv.Atoi(line)
-		grouped_calories[counter] += calories
+		groupedCalories[counter] += calories
 	}
 
-	sort.Sort(sort.Reverse(sort.IntSlice(grouped_calories)))
+	sort.Sort(sort.Reverse(sort.IntSlice(groupedCalories)))
 
-	total_calories := 0
+	totalCalories := 0
 	for i := 0; i < 3; i++ {
-		total_calories += grouped_calories[i]
+		totalCalories += groupedCalories[i]
 	}
 
-	return total_calories
+	return totalCalories
 }
 
 func Main() {
-	data := utils.ReadPuzzleData(DAY)
+	data := utils.ReadPuzzleData(Day)
 
-	fmt.Println("Day", DAY)
+	fmt.Println("Day", Day)
 	fmt.Println("Part 1:", Part1(data))
 	fmt.Println("Part 2:", Part2(data))
 }

@@ -6,17 +6,17 @@ import (
 )
 
 func TestPart1(t *testing.T) {
-	assert.Equal(t, Part1("mjqjpqmgbljsphdztnvjfqwrcgsmlb"), 7)
-	assert.Equal(t, Part1("bvwbjplbgvbhsrlpgdmjqwftvncz"), 5)
-	assert.Equal(t, Part1("nppdvjthqldpwncqszvftbrmjlhg"), 6)
-	assert.Equal(t, Part1("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg"), 10)
-	assert.Equal(t, Part1("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"), 11)
+	assert.Equal(t, 7, Part1("mjqjpqmgbljsphdztnvjfqwrcgsmlb"))
+	assert.Equal(t, 5, Part1("bvwbjplbgvbhsrlpgdmjqwftvncz"))
+	assert.Equal(t, 6, Part1("nppdvjthqldpwncqszvftbrmjlhg"))
+	assert.Equal(t, 10, Part1("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg"))
+	assert.Equal(t, 11, Part1("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"))
 }
 
 func TestPart2(t *testing.T) {
-	assert.Equal(t, Part2("mjqjpqmgbljsphdztnvjfqwrcgsmlb"), 19)
-	assert.Equal(t, Part2("bvwbjplbgvbhsrlpgdmjqwftvncz"), 23)
-	assert.Equal(t, Part2("nppdvjthqldpwncqszvftbrmjlhg"), 23)
-	assert.Equal(t, Part2("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg"), 29)
-	assert.Equal(t, Part2("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"), 26)
+	assert.Equal(t, 19, Part2("mjqjpqmgbljsphdztnvjfqwrcgsmlb"))
+	assert.Equal(t, 23, Part2("bvwbjplbgvbhsrlpgdmjqwftvncz"))
+	assert.Equal(t, 23, Part2("nppdvjthqldpwncqszvftbrmjlhg"))
+	assert.Equal(t, 29, Part2("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg"))
+	assert.Equal(t, 26, Part2("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"))
 }

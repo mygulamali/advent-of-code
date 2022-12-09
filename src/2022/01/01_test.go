@@ -5,7 +5,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var TEST_DATA = []string {
+var TestData = []string {
     "1000",
     "2000",
     "3000",
@@ -23,9 +23,9 @@ var TEST_DATA = []string {
 }
 
 func TestDay1Part1(t *testing.T) {
-	assert.Equal(t, Part1(TEST_DATA), 24000)
+	assert.Equal(t, 24000, Part1(TestData))
 }
 
 func TestDay1Part2(t *testing.T) {
-	assert.Equal(t, Part2(TEST_DATA), 45000)
+	assert.Equal(t, 45000, Part2(TestData))
 }

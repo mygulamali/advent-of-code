@@ -9,7 +9,7 @@ import (
 	"gulamali.net/src/2022/utils"
 )
 
-var DAY = 5
+var Day = 5
 
 type Move struct {
 	amount int
@@ -20,8 +20,8 @@ type Move struct {
 func ParseStacks(data []string) [][]string {
 	stacks := [][]string {}
 
-	for line_indx, line := range data {
-		if data[line_indx + 1] == "" {
+	for lineIndx, line := range data {
+		if data[lineIndx + 1] == "" {
 			break
 		}
 
@@ -38,10 +38,10 @@ func ParseStacks(data []string) [][]string {
 		// add crates to the stacks
 		for i := 0; i < len(line); i += 4 {
 			crate := line[i:i + 3]
-			stack_indx := i / 4
+			stackIndx := i / 4
 
 			if crate != "   " {
-				stacks[stack_indx] = append(stacks[stack_indx], string(crate[1]))
+				stacks[stackIndx] = append(stacks[stackIndx], string(crate[1]))
 			}
 		}
 	}
@@ -82,12 +82,12 @@ func ParseMoves(data []string) []Move {
 }
 
 func getTopCrates(stacks [][]string) []string {
-	top_crates := []string{}
+	topCrates := []string{}
 	for _, stack := range stacks {
 		n := len(stack)
-		top_crates = append(top_crates, stack[n - 1])
+		topCrates = append(topCrates, stack[n - 1])
 	}
-	return top_crates
+	return topCrates
 }
 
 func Part1(data []string) string {
@@ -106,8 +106,8 @@ func Part1(data []string) string {
 		stacks[move.from] = stacks[move.from][:n - move.amount]
 	}
 
-	top_crates := getTopCrates(stacks)
-	return strings.Join(top_crates, "")
+	topCrates := getTopCrates(stacks)
+	return strings.Join(topCrates, "")
 }
 
 func Part2(data []string) string {
@@ -126,14 +126,14 @@ func Part2(data []string) string {
 		stacks[move.from] = stacks[move.from][:n - move.amount]
 	}
 
-	top_crates := getTopCrates(stacks)
-	return strings.Join(top_crates, "")
+	topCrates := getTopCrates(stacks)
+	return strings.Join(topCrates, "")
 }
 
 func Main() {
-	data := utils.ReadPuzzleData(DAY)
+	data := utils.ReadPuzzleData(Day)
 
-	fmt.Println("Day", DAY)
+	fmt.Println("Day", Day)
 	fmt.Println("Part 1:", Part1(data))
 	fmt.Println("Part 2:", Part2(data))
 }

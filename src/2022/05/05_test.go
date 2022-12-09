@@ -5,7 +5,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var TEST_DATA = []string {
+var TestData = []string {
 	"    [D]",
 	"[N] [C]",
 	"[Z] [M] [P]",
@@ -18,31 +18,31 @@ var TEST_DATA = []string {
 }
 
 func TestParseStacks(t *testing.T) {
-	expected_stacks := [][]string {
+	expectedStacks := [][]string {
 		{ "Z", "N" },
 		{ "M", "C", "D" },
 		{ "P" },
 	}
 
-	assert.Equal(t, ParseStacks(TEST_DATA), expected_stacks)
+	assert.Equal(t, ParseStacks(TestData), expectedStacks)
 }
 
 func TestParseMoves(t *testing.T) {
-	expected_moves := []Move {
+	expectedMoves := []Move {
         Move{1, 1, 0},
         Move{3, 0, 2},
 		Move{2, 1, 0},
 		Move{1, 0, 1},
 	}
 
-	assert.Equal(t, ParseMoves(TEST_DATA), expected_moves)
+	assert.Equal(t, ParseMoves(TestData), expectedMoves)
 }
 
 
 func TestPart1(t *testing.T) {
-	assert.Equal(t, Part1(TEST_DATA), "CMZ")
+	assert.Equal(t, "CMZ", Part1(TestData))
 }
 
 func TestPart2(t *testing.T) {
-	assert.Equal(t, Part2(TEST_DATA), "MCD")
+	assert.Equal(t, "MCD", Part2(TestData))
 }

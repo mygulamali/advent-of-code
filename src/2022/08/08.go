@@ -10,9 +10,9 @@ import (
 var Day = 8
 
 func height(data []string, row int, col int) int {
-	str_value := string(data[row][col])
-	int_value, _ := strconv.Atoi(str_value)
-	return int_value
+	strValue := string(data[row][col])
+	intValue, _ := strconv.Atoi(strValue)
+	return intValue
 }
 
 func Part1(data []string) int {
