@@ -2,6 +2,7 @@ package day11
 
 import (
 	"fmt"
+	"math/big"
 	"regexp"
 	"sort"
 	"strconv"
@@ -12,60 +13,68 @@ import (
 
 var Day = 11
 
+var Zero = big.NewInt(0)
+
 var reItems = regexp.MustCompile(`(\d+),?`)
 var reOperation = regexp.MustCompile(`Operation: new = (.+)`)
 var reTest = regexp.MustCompile(`Test: divisible by (\d+)`)
 var reBranch = regexp.MustCompile(`If (true|false): throw to monkey (\d+)`)
 
 type Monkey struct {
-	items []int
+	items []*big.Int
 	operation []string
-	test int
+	test *big.Int
 	truthy int
 	falsey int
 	inspections int
 }
 
-func (self *Monkey) TestWorryLevel(indx int) (int, int) {
-	worryLevel := self.CalculateWorryLevel(indx)
-	if worryLevel % self.test == 0 {
+func (self *Monkey) TestWorryLevel(indx int, part2 bool) (int, *big.Int) {
+	worryLevel := self.CalculateWorryLevel(indx, part2)
+	tmp := big.NewInt(0)
+	if tmp.Mod(worryLevel, self.test).Cmp(Zero) == 0 {
 		return self.truthy, worryLevel
 	}
 	return  self.falsey, worryLevel
 }
 
-func (self *Monkey) CalculateWorryLevel(indx int) int {
+func (self *Monkey) CalculateWorryLevel(indx int, part2 bool) *big.Int {
 	old := self.items[indx]
 
 	// process left-hand-side of operation
-	left, err := strconv.Atoi(self.operation[0])
-	if err != nil {
+	left, ok := new(big.Int).SetString(self.operation[0], 10)
+	if !ok {
 		left = old
 	}
 
 	// process right-hand-side of operation
-	right, err := strconv.Atoi(self.operation[2])
-	if err != nil {
+	right, ok := new(big.Int).SetString(self.operation[2], 10)
+	if !ok {
 		right = old
 	}
 
 	// calculate new worry level
-	var new int
+	new := big.NewInt(0)
 	if self.operation[1] == "+" {
-		new = left + right
+		new.Add(left, right)
 	} else if self.operation[1] == "*" {
-		new = left * right
+		new.Mul(left, right)
 	}
 
-	return new / 3
+	if part2 {
+		return new
+	}
+
+	tmp := big.NewInt(0)
+	return tmp.Div(new, big.NewInt(3))
 }
 
-func ParseItems(data string) []int {
-	items := []int{}
+func ParseItems(data string) []*big.Int {
+	items := []*big.Int{}
 
 	match := reItems.FindAllStringSubmatch(data, -1)
 	for i := 0; i < len(match); i++ {
-		v, _ := strconv.Atoi(match[i][1])
+		v, _ := new(big.Int).SetString(match[i][1], 10)
 		items = append(items, v)
 	}
 
@@ -77,9 +86,9 @@ func ParseOperation(data string) []string {
 	return strings.Split(match[1], " ")
 }
 
-func ParseTest(data string) int {
+func ParseTest(data string) *big.Int {
 	match := reTest.FindStringSubmatch(data)
-	v, _ := strconv.Atoi(match[1])
+	v, _ := new(big.Int).SetString(match[1], 10)
 	return v
 }
 
@@ -106,9 +115,8 @@ func ParseData(data []string) []Monkey {
 	return monkeys
 }
 
-func Part1(data []string) int {
+func SimbianShenanigans(data []string, rounds int, part2 bool) int {
 	monkeys := ParseData(data)
-	rounds := 20
 
 	// loop over rounds
 	for i := 0; i < rounds; i++ {
@@ -116,12 +124,12 @@ func Part1(data []string) int {
 		for j := 0; j < len(monkeys); j++ {
 			// loop over items taken by each monkey
 			for k := 0; k < len(monkeys[j].items); k++ {
-				indx, worryLevel := monkeys[j].TestWorryLevel(k)
+				indx, worryLevel := monkeys[j].TestWorryLevel(k, part2)
 				monkeys[indx].items = append(monkeys[indx].items, worryLevel)
 			}
 
 			monkeys[j].inspections += len(monkeys[j].items)
-			monkeys[j].items = []int{}
+			monkeys[j].items = []*big.Int{}
 		}
 	}
 
@@ -132,8 +140,14 @@ func Part1(data []string) int {
 	return monkeys[0].inspections * monkeys[1].inspections
 }
 
+
+func Part1(data []string) int {
+	return SimbianShenanigans(data, 20, false)
+}
+
 func Part2(data []string) int {
-	return 0
+	return SimbianShenanigans(data, 20, true)
+	// return SimbianShenanigans(data, 10000, true)
 }
 
 func Main() {
