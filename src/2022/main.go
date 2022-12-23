@@ -7,6 +7,7 @@ import (
 	"gulamali.net/src/2022/08"
 	"gulamali.net/src/2022/10"
 	"gulamali.net/src/2022/11"
+	"gulamali.net/src/2022/21"
 )
 
 func main() {
@@ -16,4 +17,5 @@ func main() {
 	day08.Main()
 	day10.Main()
 	day11.Main()
+	day21.Main()
 }
