@@ -10,8 +10,10 @@ My attempts at [Advent of Code](https://adventofcode.com/).
 | [2019](https://adventofcode.com/2019) | [Ruby] / [Jupyter notebook] | 5 |
 | [2020](https://adventofcode.com/2020) | [Jupyter notebook] / [C] | 13 |
 | [2021](https://adventofcode.com/2021) | [Python] | 19 |
+| [2022](https://adventofcode.com/2022) | [Python] / [Go] | 22 |
 
 [C]: https://en.wikipedia.org/wiki/C_(programming_language) "C"
+[Go]: https://go.dev/ "Go"
 [Jupyter notebook]: https://jupyter.org/ "Jupyter notebook"
 [Python]: https://www.python.org/ "Python"
 [Ruby]: https://www.ruby-lang.org/ "Ruby"

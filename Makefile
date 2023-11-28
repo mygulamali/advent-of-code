@@ -16,8 +16,6 @@ EXES = $(patsubst $(SRC_DIR)/%.c, $(BIN_DIR)/%, $(SOURCES))
 .SUFFIXES:
 .SUFFIXES: .c .o
 
-all: $(EXES)
-
 .c.o:
 	$(CC) -c $(CFLAGS) $< -o $@
 
@@ -25,9 +23,15 @@ $(BIN_DIR)/%: $(SRC_DIR)/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(SRC_DIR)/utils.c $< -o $@
 
-2020:
+2020: $(EXES)
 	$(BIN_DIR)/2020/01 $(PWD)/data/2020/01.txt
 	$(BIN_DIR)/2020/02 $(PWD)/data/2020/02.txt
+
+2022:
+	cd src/2022; make
+
+2022-tests:
+	cd src/2022; make tests
 
 .PHONY: clean
 clean:
