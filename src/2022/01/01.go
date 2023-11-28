@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strconv"
 
-	"gulamali.net/src/2022/utils"
+	"gulamali.net/utils"
 )
 
 var Day = 1

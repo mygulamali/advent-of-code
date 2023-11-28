@@ -1,16 +1,16 @@
 package main
 
 import (
-	"gulamali.net/src/2022/01"
-	"gulamali.net/src/2022/05"
-	"gulamali.net/src/2022/06"
-	"gulamali.net/src/2022/08"
-	"gulamali.net/src/2022/09"
-	"gulamali.net/src/2022/10"
-	"gulamali.net/src/2022/11"
-	"gulamali.net/src/2022/21"
-	"gulamali.net/src/2022/23"
-	"gulamali.net/src/2022/25"
+	"gulamali.net/01"
+	"gulamali.net/05"
+	"gulamali.net/06"
+	"gulamali.net/08"
+	"gulamali.net/09"
+	"gulamali.net/10"
+	"gulamali.net/11"
+	"gulamali.net/21"
+	"gulamali.net/23"
+	"gulamali.net/25"
 )
 
 func main() {

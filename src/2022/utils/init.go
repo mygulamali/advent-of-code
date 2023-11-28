@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-var DATA_DIR = "data/2022"
+var DATA_DIR = "../../data/2022"
 
 func ReadPuzzleData(day int) []string {
 	filename := fmt.Sprintf("%s/%02d.txt", DATA_DIR, day)

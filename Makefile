@@ -28,11 +28,10 @@ $(BIN_DIR)/%: $(SRC_DIR)/%.c
 	$(BIN_DIR)/2020/02 $(PWD)/data/2020/02.txt
 
 2022:
-	go run src/2022/main.go
+	cd src/2022; make
 
 2022-tests:
-	go clean -testcache
-	go test gulamali.net/src/2022/...
+	cd src/2022; make tests
 
 .PHONY: clean
 clean:
