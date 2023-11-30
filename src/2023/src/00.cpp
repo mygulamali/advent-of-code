@@ -6,15 +6,16 @@
 using namespace std;
 using namespace myg;
 
-Problem::Problem(const string filename) {
-    _filename = filename;
+Problem::Problem(const string filename) :
+_filename(filename)
+{
     read_data();
 }
 
-Problem::Problem(const vector<string> data) {
-    _filename = "";
-    _data = data;
-}
+Problem::Problem(const vector<string> data) :
+_filename(""),
+_data(data)
+{}
 
 Problem::Problem(const Problem& problem) {
     _filename = problem.filename();
