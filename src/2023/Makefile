@@ -6,7 +6,7 @@ SRC_DIR = $(PWD)/src
 TESTS_DIR = $(PWD)/tests
 VENDOR_DIR = $(PWD)/vendor
 
-CXXFLAGS += -Wall -Wextra -Wpedantic -I$(INCLUDE_DIR) -I$(VENDOR_DIR)
+CXXFLAGS += -Wall -Wextra -Wpedantic -I$(INCLUDE_DIR) -I$(VENDOR_DIR) -O3
 LDFLAGS += -lm
 
 SOURCES = $(wildcard $(SRC_DIR)/0*.cpp)
@@ -27,11 +27,11 @@ tests: $(BIN_DIR)/tests
 	$(BIN_DIR)/tests
 
 $(BIN_DIR)/main: $(OBJECTS) $(SOURCES) $(SRC_DIR)/main.cpp
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(SRC_DIR)/main.cpp $< -o $@
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(SRC_DIR)/main.cpp $(OBJECTS) -o $@
 
 $(BIN_DIR)/tests: $(OBJECTS) $(TEST_SOURCES)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) \
-	    $(VENDOR_DIR)/catch_amalgamated.cpp $(TEST_SOURCES) $< -o $@
+	    $(VENDOR_DIR)/catch_amalgamated.cpp $(TEST_SOURCES) $(OBJECTS) -o $@
 
 .PHONY: clean
 clean:
