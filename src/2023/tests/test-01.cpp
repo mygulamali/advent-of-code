@@ -14,4 +14,19 @@ TEST_CASE("Day01", "[day-01]") {
 
         REQUIRE( d01.part_1() == 142 );
     }
+
+    SECTION("Part 2") {
+        std::vector<std::string> test_data{
+            "two1nine",
+            "eightwothree",
+            "abcone2threexyz",
+            "xtwone3four",
+            "4nineeightseven2",
+            "zoneight234",
+            "7pqrstsixteen",
+        };
+        myg::Day01 d01(test_data);
+
+        REQUIRE( d01.part_2() == 281 );
+    }
 }
