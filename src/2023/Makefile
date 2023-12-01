@@ -9,7 +9,7 @@ VENDOR_DIR = $(PWD)/vendor
 CXXFLAGS += -Wall -Wextra -Wpedantic -I$(INCLUDE_DIR) -I$(VENDOR_DIR) -O3
 LDFLAGS += -lm
 
-SOURCES = $(wildcard $(SRC_DIR)/0*.cpp)
+SOURCES = $(wildcard $(SRC_DIR)/0*.cpp $(SRC_DIR)/problem.cpp)
 OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
 
 TEST_SOURCES = $(patsubst $(SRC_DIR)/%,$(TESTS_DIR)/test-%,$(SOURCES))

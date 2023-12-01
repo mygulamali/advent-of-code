@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "00.hpp"
+#include "problem.hpp"
 
 using namespace std;
 using namespace myg;

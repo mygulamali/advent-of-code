@@ -1,6 +1,6 @@
 #include "catch_amalgamated.hpp"
 
-#include "00.hpp"
+#include "problem.hpp"
 
 TEST_CASE("Problem", "[problem]") {
     std::string test_filename = "tests/test-data.txt";
