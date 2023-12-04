@@ -2,6 +2,31 @@
 
 #include "utils.hpp"
 
+TEST_CASE("utils matches", "[utils-matches]") {
+    SECTION("matches") {
+        std::regex rgx("(\\d)");
+        std::string str("123");
+
+        auto matches = myg::matches(str, rgx);
+
+        REQUIRE( matches.size() == 3 );
+        REQUIRE( matches[0] == "1" );
+        REQUIRE( matches[1] == "2" );
+        REQUIRE( matches[2] == "3" );
+    }
+
+    SECTION("matches with specific group") {
+        std::regex rgx("(?=(\\d{2}))");
+        std::string str("123");
+
+        auto matches = myg::matches(str, rgx, 1);
+
+        REQUIRE( matches.size() == 2 );
+        REQUIRE( matches[0] == "12" );
+        REQUIRE( matches[1] == "23" );
+    }
+}
+
 TEST_CASE("utils split", "[utils-split]") {
     SECTION("split") {
         char delim = ';';
