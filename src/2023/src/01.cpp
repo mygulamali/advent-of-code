@@ -1,3 +1,5 @@
+#include "utils.hpp"
+
 #include "01.hpp"
 
 using namespace std;
@@ -50,18 +52,8 @@ int Day01::part_2(void) {
     int sum = 0;
 
     for (auto str : _data) {
-        string digits;
-
-        sregex_iterator iter(str.begin(), str.end(), Day01::RGX);
-        sregex_iterator end;
-
-        while (iter != end) {
-            smatch match = *iter;
-            digits.push_back(as_number(match.str(1)));
-            ++iter;
-        }
-
-        string value = {digits[0], digits.back()};
+        vector<string> digits = matches(str, Day01::RGX, 1);
+        string value = {as_number(digits[0]), as_number(digits.back())};
         sum += stoi(value);
     }
 
