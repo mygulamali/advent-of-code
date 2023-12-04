@@ -29,4 +29,13 @@ TEST_CASE("Day01", "[day-01]") {
 
         REQUIRE( d01.part_2() == 281 );
     }
+
+    SECTION("Part 2 with overlapping number matches") {
+        std::vector<std::string> test_data{
+            "xoneightx",
+        };
+        myg::Day01 d01(test_data);
+
+        REQUIRE( d01.part_2() == 18 );
+    }
 }

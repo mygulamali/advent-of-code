@@ -5,7 +5,7 @@ using namespace myg;
 
 const int Day01::VAL_0 = static_cast<int>('0');
 const int Day01::VAL_9 = static_cast<int>('9');
-const regex Day01::RGX("(\\d|one|two|three|four|five|six|seven|eight|nine)");
+const regex Day01::RGX("(?=(\\d|one|two|three|four|five|six|seven|eight|nine))");
 const std::unordered_map<std::string, char> Day01::NUMBER_MAP({
     {"0",     '0'},
     {"1",     '1'},
@@ -57,7 +57,7 @@ int Day01::part_2(void) {
 
         while (iter != end) {
             smatch match = *iter;
-            digits.push_back(as_number(match.str()));
+            digits.push_back(as_number(match.str(1)));
             ++iter;
         }
 
