@@ -31,10 +31,10 @@ const std::unordered_map<std::string, char> Day01::NUMBER_MAP({
 int Day01::part_1(void) {
     int sum = 0;
 
-    for (int i = 0, n = _data.size(); i < n; i++) {
+    for (auto str : _data) {
         string digits;
-        for (int j = 0, m = _data.at(i).length(); j < m; j++) {
-            char c = _data.at(i).at(j);
+        for (int j = 0, m = str.length(); j < m; j++) {
+            char c = str.at(j);
             if (is_numeric(c))
                 digits.push_back(c);
         }
@@ -49,10 +49,10 @@ int Day01::part_1(void) {
 int Day01::part_2(void) {
     int sum = 0;
 
-    for (int i = 0, n = _data.size(); i < n; i++) {
+    for (auto str : _data) {
         string digits;
 
-        sregex_iterator iter(_data.at(i).begin(), _data.at(i).end(), Day01::RGX);
+        sregex_iterator iter(str.begin(), str.end(), Day01::RGX);
         sregex_iterator end;
 
         while (iter != end) {
