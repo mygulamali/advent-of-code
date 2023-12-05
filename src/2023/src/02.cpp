@@ -15,7 +15,8 @@ int Day02::part_1(void) {
 
     for (auto str : _data) {
         int game_id = Day02::get_game_id(str);
-        if (Day02::has_all_valid_sets(str))
+        vector<set_map_t> sets = Day02::get_sets(str);
+        if (Day02::has_all_valid_sets(sets))
             count += game_id;
     }
 
@@ -31,12 +32,12 @@ int Day02::get_game_id(const string& str) {
     return stoi(matches[0]);
 }
 
-const vector<unordered_map<COLOR, int>> Day02::get_sets(const string& str) {
-    vector<unordered_map<COLOR, int>> ret;
+const vector<set_map_t> Day02::get_sets(const string& str) {
+    vector<set_map_t> ret;
     vector<string> sets = myg::split(str, ';');
     for (auto set : sets) {
         vector<string> matches = myg::matches(set, Day02::SET_RGX);
-        unordered_map<COLOR, int> set_map;
+        set_map_t set_map;
 
         for (auto match : matches) {
             vector<string> parts = myg::split(match, ' ');
@@ -61,8 +62,7 @@ const vector<unordered_map<COLOR, int>> Day02::get_sets(const string& str) {
     return ret;
 }
 
-bool Day02::has_all_valid_sets(const string& str) {
-    vector<unordered_map<COLOR, int>> sets = Day02::get_sets(str);
+bool Day02::has_all_valid_sets(const vector<set_map_t>& sets) {
     for (auto set : sets) {
         if (
             (set[COLOR::r] > 12) ||

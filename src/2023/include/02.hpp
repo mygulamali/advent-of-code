@@ -8,6 +8,8 @@
 namespace myg {
     enum class COLOR { r, g, b };
 
+    typedef std::unordered_map<COLOR, int> set_map_t;
+
     class Day02: public Problem {
     public:
         using Problem::Problem;
@@ -20,7 +22,7 @@ namespace myg {
 
     private:
         static int get_game_id(const std::string& str);
-        static const std::vector<std::unordered_map<COLOR,int>> get_sets(const std::string& str);
-        static bool has_all_valid_sets(const std::string& str);
+        static const std::vector<set_map_t> get_sets(const std::string& str);
+        static bool has_all_valid_sets(const std::vector<set_map_t>& sets);
     };
 };
