@@ -12,8 +12,8 @@ int Day02::part_1(void) {
     int count = 0;
 
     for (auto str : _data) {
-        int game_id = Day02::get_game_id(str);
-        vector<set_map_t> sets = Day02::get_sets(str);
+        int game_id = Day02::parse_game_id(str);
+        vector<set_map_t> sets = Day02::parse_sets(str);
         if (Day02::has_all_valid_sets(sets))
             count += game_id;
     }
@@ -25,19 +25,19 @@ int Day02::part_2(void) {
     int sum = 0;
 
     for (auto str : _data) {
-        vector<set_map_t> sets = Day02::get_sets(str);
+        vector<set_map_t> sets = Day02::parse_sets(str);
         sum += Day02::min_set_power(sets);
     }
 
     return sum;
 }
 
-int Day02::get_game_id(const string& str) {
+int Day02::parse_game_id(const string& str) {
     auto matches = myg::matches(str, Day02::GAME_RGX, 1);
     return stoi(matches[0]);
 }
 
-const vector<set_map_t> Day02::get_sets(const string& str) {
+const vector<set_map_t> Day02::parse_sets(const string& str) {
     vector<set_map_t> ret;
     vector<string> sets = myg::split(str, ';');
     for (auto set : sets) {
