@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "utils.hpp"
 
 #include "02.hpp"
@@ -24,7 +22,14 @@ int Day02::part_1(void) {
 }
 
 int Day02::part_2(void) {
-    return 0;
+    int sum = 0;
+
+    for (auto str : _data) {
+        vector<set_map_t> sets = Day02::get_sets(str);
+        sum += Day02::min_set_power(sets);
+    }
+
+    return sum;
 }
 
 int Day02::get_game_id(const string& str) {
@@ -72,4 +77,18 @@ bool Day02::has_all_valid_sets(const vector<set_map_t>& sets) {
             return false;
     }
     return true;
+}
+
+int Day02::min_set_power(const std::vector<set_map_t>& sets) {
+    set_map_t min_set({
+        {COLOR::r, 1},
+        {COLOR::g, 1},
+        {COLOR::b, 1},
+    });
+
+    for (auto set : sets)
+        for (auto color : vector<COLOR>({ COLOR::r, COLOR::g, COLOR::b }))
+            min_set[color] = max({min_set[color], set[color], 1});
+
+    return min_set[COLOR::r] * min_set[COLOR::g] * min_set[COLOR::b];
 }

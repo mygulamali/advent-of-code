@@ -24,5 +24,6 @@ namespace myg {
         static int get_game_id(const std::string& str);
         static const std::vector<set_map_t> get_sets(const std::string& str);
         static bool has_all_valid_sets(const std::vector<set_map_t>& sets);
+        static int min_set_power(const std::vector<set_map_t>& sets);
     };
 };

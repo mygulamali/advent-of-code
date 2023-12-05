@@ -18,6 +18,8 @@ int main() {
     Day02 d02("../../data/2023/02.txt");
     cout << "Part 1: ";
     cout << d02.part_1() << endl;
+    cout << "Part 2: ";
+    cout << d02.part_2() << endl;
 
     return 0;
 }
