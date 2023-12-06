@@ -16,8 +16,8 @@ namespace myg {
 
         static const std::regex RGX;
 
-        int part_2(void);
         ulong part_1(void);
+        ulong part_2(void);
 
     private:
         std::vector<race> parse_races(void);

@@ -19,8 +19,13 @@ ulong Day06::part_1(void) {
     return ret;
 }
 
-int Day06::part_2(void) {
-    return 0;
+ulong Day06::part_2(void) {
+    vector<string> times = myg::matches(_data[0], Day06::RGX);
+    vector<string> distances = myg::matches(_data[1], Day06::RGX);
+
+    struct race r = { stoul(join(times)), stoul(join(distances)) };
+
+    return Day06::n_winning_races(r);
 }
 
 vector<race> Day06::parse_races(void) {

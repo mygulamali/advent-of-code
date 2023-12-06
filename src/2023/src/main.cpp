@@ -21,6 +21,7 @@ int main() {
     cout << "Day 6" << endl;
     Day06 d06("../../data/2023/06.txt");
     cout << "Part 1: " << d06.part_1() << endl;
+    cout << "Part 2: " << d06.part_2() << endl;
 
     return 0;
 }
