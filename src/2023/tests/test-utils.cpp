@@ -40,3 +40,13 @@ TEST_CASE("utils split", "[utils-split]") {
         REQUIRE( tokens[2] == "Gamma" );
     };
 }
+
+TEST_CASE("utils join", "[utils-join]") {
+    SECTION("join") {
+        std::vector<std::string> strs = {"a", "b", "c"};
+
+        auto str = myg::join(strs);
+
+        REQUIRE( str == "abc" );
+    };
+}

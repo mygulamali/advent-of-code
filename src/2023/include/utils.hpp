@@ -7,4 +7,5 @@
 namespace myg {
     std::vector<std::string> matches(const std::string& str, const std::regex& rgx, const int grp = 0);
     std::vector<std::string> split(const std::string& str, const char& delim);
+    std::string join(const std::vector<std::string>& strs);
 }

@@ -26,3 +26,9 @@ vector<string> myg::split(const string& str, const char& delim) {
     while (getline(ss, token, delim)) tokens.push_back(token);
     return tokens;
 }
+
+string myg::join(const vector<string>& strs) {
+    string ret;
+    for (auto str : strs) ret += str;
+    return ret;
+}
