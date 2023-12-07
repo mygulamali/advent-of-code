@@ -4,6 +4,7 @@
 #include "02.hpp"
 #include "04.hpp"
 #include "06.hpp"
+#include "07.hpp"
 
 using namespace std;
 using namespace myg;
@@ -27,6 +28,10 @@ int main() {
     Day06 d06("../../data/2023/06.txt");
     cout << "Part 1: " << d06.part_1() << endl;
     cout << "Part 2: " << d06.part_2() << endl;
+
+    cout << "Day 7" << endl;
+    Day07 d07("../../data/2023/07.txt");
+    cout << "Part 1: " << d07.part_1() << endl;
 
     return 0;
 }
