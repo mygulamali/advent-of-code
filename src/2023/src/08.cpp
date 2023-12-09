@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "utils.hpp"
 
 #include "08.hpp"
@@ -33,7 +31,41 @@ int Day08::part_1(void) {
 }
 
 int Day08::part_2(void) {
-    return 0;
+    const string rule = _data[0];
+    graph_t g = build_graph();
+
+    vector<string> start_nodes;
+    for (auto i = g.begin(); i != g.end(); ++i)
+        if (i->first.back() == 'A')
+            start_nodes.push_back(i->first);
+
+    vector<string> end_nodes;
+    for (auto i = g.begin(); i != g.end(); ++i)
+        if (i->first.back() == 'Z')
+            end_nodes.push_back(i->first);
+
+    uint steps = 0;
+    uint i = 0;
+    uint n = rule.size();
+    vector<string> next_nodes(start_nodes);
+
+    while (!all_end_nodes(next_nodes)) {
+        vector<string> nn;
+
+        if (rule[i] == 'L') {
+            for (auto node : next_nodes)
+                nn.push_back(g[node].first);
+        } else {
+            for (auto node : next_nodes)
+                nn.push_back(g[node].second);
+        }
+
+        next_nodes = nn;
+        i = (i + 1) % n;
+        steps++;
+    }
+
+    return steps;
 }
 
 const graph_t Day08::build_graph() const {
@@ -46,4 +78,11 @@ const graph_t Day08::build_graph() const {
     }
 
     return g;
+}
+
+bool Day08::all_end_nodes(const vector<string>& nodes) {
+    for (auto node : nodes)
+        if (node.back() != 'Z')
+            return false;
+    return true;
 }

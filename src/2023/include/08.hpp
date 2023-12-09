@@ -22,5 +22,6 @@ namespace myg {
 
     protected:
         const graph_t build_graph(void) const;
+        static bool all_end_nodes(const std::vector<std::string>& nodes);
     };
 };

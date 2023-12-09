@@ -37,6 +37,8 @@ int main() {
     cout << "Day 8" << endl;
     Day08 d08("../../data/2023/08.txt");
     cout << "Part 1: " << d08.part_1() << endl;
+    // NOTE: commented out because it takes a long time to run
+    // cout << "Part 2: " << d08.part_2() << endl;
 
     return 0;
 }
