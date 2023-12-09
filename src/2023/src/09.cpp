@@ -14,26 +14,7 @@ int Day09::part_1(void) {
     int total = 0;
 
     for (auto str : _data) {
-        // create first history
-        vector<string> h_str = myg::matches(str, RGX);
-        int n = h_str.size();
-        vector<int> h_int(n);
-        for (int i = 0; i < n; i++)
-            h_int[i] = stoi(h_str[i]);
-
-        // create subsequent histories until history is all zeros
-        vector<vector<int>> h;
-        h.push_back(h_int);
-        while (!all_zeros(h.back())) {
-            vector<int> current = h.back();
-            int m = current.size();
-
-            vector<int> next(m - 1);
-            for (int i = 0; i < m - 1; i++)
-                next[i] = current[i + 1] - current[i];
-
-            h.push_back(next);
-        }
+        vector<deque<int>> h = create_histories(str);
 
         // backtrack to predict new value
         int m = h.size() - 1;
@@ -51,8 +32,33 @@ int Day09::part_2(void) {
     return 0;
 }
 
-bool Day09::all_zeros(const vector<int>& v) {
-    for (auto e : v)
+const vector<deque<int>> Day09::create_histories(const string& s) const {
+    // create first history
+    vector<string> h_str = myg::matches(s, RGX);
+    int n = h_str.size();
+    deque<int> h_int(n);
+    for (int i = 0; i < n; i++)
+        h_int[i] = stoi(h_str[i]);
+
+    // create subsequent histories until history is all zeros
+    vector<deque<int>> ret;
+    ret.push_back(h_int);
+    while (!all_zeros(ret.back())) {
+        deque<int> current = ret.back();
+        int m = current.size();
+
+        deque<int> next(m - 1);
+        for (int i = 0; i < m - 1; i++)
+            next[i] = current[i + 1] - current[i];
+
+        ret.push_back(next);
+    }
+
+    return ret;
+};
+
+bool Day09::all_zeros(const deque<int>& d) {
+    for (auto e : d)
         if (e != 0) return false;
     return true;
 }

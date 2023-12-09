@@ -1,5 +1,6 @@
 #pragma once
 
+#include <deque>
 #include <regex>
 
 #include "problem.hpp"
@@ -15,6 +16,7 @@ namespace myg {
         int part_2(void);
 
     protected:
-        static bool all_zeros(const std::vector<int>& v);
+        const std::vector<std::deque<int>> create_histories(const std::string& s) const;
+        static bool all_zeros(const std::deque<int>& d);
     };
 };
