@@ -1,6 +1,3 @@
-// TODO: remove <iostream>
-#include <iostream>
-
 #include "utils.hpp"
 
 #include "09.hpp"
@@ -16,7 +13,7 @@ int Day09::part_1(void) {
     for (auto str : _data) {
         vector<deque<int>> h = create_histories(str);
 
-        // backtrack to predict new value
+        // backtrack to predict new value at end of history
         int m = h.size() - 1;
         h[m].push_back(0);
         for (int i = m; i > 0; --i)
@@ -29,7 +26,21 @@ int Day09::part_1(void) {
 }
 
 int Day09::part_2(void) {
-    return 0;
+    int total = 0;
+
+    for (auto str : _data) {
+        vector<deque<int>> h = create_histories(str);
+
+        // backtrack to predict new value at beginning of history
+        int m = h.size() - 1;
+        h[m].push_front(0);
+        for (int i = m; i > 0; --i)
+            h[i - 1].push_front(h[i - 1].front() - h[i].front());
+
+        total += h[0].front();
+    }
+
+    return total;
 }
 
 const vector<deque<int>> Day09::create_histories(const string& s) const {
