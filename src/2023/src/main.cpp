@@ -3,6 +3,7 @@
 #include "01.hpp"
 #include "02.hpp"
 #include "04.hpp"
+#include "05.hpp"
 #include "06.hpp"
 #include "07.hpp"
 #include "08.hpp"
@@ -25,6 +26,10 @@ int main() {
     cout << "Day 4" << endl;
     Day04 d04("../../data/2023/04.txt");
     cout << "Part 1: " << d04.part_1() << endl;
+
+    cout << "Day 5" << endl;
+    Day05 d05("../../data/2023/05.txt");
+    cout << "Part 1: " << d05.part_1() << endl;
 
     cout << "Day 6" << endl;
     Day06 d06("../../data/2023/06.txt");
