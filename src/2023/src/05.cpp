@@ -36,9 +36,8 @@ ulong Day05::part_1(void) {
     unordered_map<string, Map> maps = get_maps();
 
     ulong location = numeric_limits<ulong>::max();
-    for (auto seed : seeds) {
+    for (auto seed : seeds)
         location = min(location, get_location(maps, seed));
-    }
 
     return location;
 }
@@ -101,9 +100,7 @@ const Map Day05::get_map(const string& name) const {
 
         if (!read_line) continue;
 
-        if (read_line && line.empty()) {
-            break;
-        }
+        if (read_line && line.empty()) break;
 
         vector<string> nums = myg::matches(line, RGX);
         struct mapping_t mapping = {
@@ -123,8 +120,8 @@ ulong Day05::get_location(
     const ulong& seed
 ) {
     ulong next = seed;
-    for (auto title : MAP_TITLES) {
+    for (auto title : MAP_TITLES)
         next = maps.at(title)[next];
-    }
+
     return next;
 }

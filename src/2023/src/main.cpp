@@ -30,7 +30,8 @@ int main() {
     cout << "Day 5" << endl;
     Day05 d05("../../data/2023/05.txt");
     cout << "Part 1: " << d05.part_1() << endl;
-    cout << "Part 2: " << d05.part_2() << endl;
+    // NOTE: commented out because it takes a long time to run
+    // cout << "Part 2: " << d05.part_2() << endl;
 
     cout << "Day 6" << endl;
     Day06 d06("../../data/2023/06.txt");
