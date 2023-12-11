@@ -29,10 +29,11 @@ namespace myg {
         static const std::regex RGX;
 
         ulong part_1(void);
-        int part_2(void);
+        ulong part_2(void);
 
     protected:
         const std::vector<ulong> get_seeds(void) const;
+        const std::vector<std::pair<ulong, ulong>> get_seed_ranges(void) const;
         const std::unordered_map<std::string, Map> get_maps(void) const;
         const Map get_map(const std::string& name) const;
         static ulong get_location(

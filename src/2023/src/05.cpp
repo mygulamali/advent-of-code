@@ -43,8 +43,18 @@ ulong Day05::part_1(void) {
     return location;
 }
 
-int Day05::part_2(void) {
-    return 0;
+ulong Day05::part_2(void) {
+    vector<pair<ulong, ulong>> seed_ranges = get_seed_ranges();
+    unordered_map<string, Map> maps = get_maps();
+
+    ulong location = numeric_limits<ulong>::max();
+    for (auto range : seed_ranges) {
+        ulong n = range.first + range.second;
+        for (auto seed = range.first; seed <= n; seed++)
+            location = min(location, get_location(maps, seed));
+    }
+
+    return location;
 }
 
 const vector<ulong> Day05::get_seeds(void) const {
@@ -53,6 +63,18 @@ const vector<ulong> Day05::get_seeds(void) const {
 
     for (auto str : strs)
         seeds.push_back(stoul(str));
+
+    return seeds;
+}
+
+const vector<pair<ulong, ulong>> Day05::get_seed_ranges(void) const {
+    vector<string> strs = myg::matches(_data[0], RGX);
+    vector<pair<ulong, ulong>> seeds;
+
+    for (uint i = 0, n = strs.size(); i < n; i += 2) {
+        pair<ulong, ulong> p(stoul(strs[i]), stoul(strs[i + 1]));
+        seeds.push_back(p);
+    }
 
     return seeds;
 }
