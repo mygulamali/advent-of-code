@@ -11,8 +11,10 @@ My attempts at [Advent of Code](https://adventofcode.com/).
 | [2020](https://adventofcode.com/2020) | [Jupyter notebook] / [C] | 13 |
 | [2021](https://adventofcode.com/2021) | [Python] | 19 |
 | [2022](https://adventofcode.com/2022) | [Python] / [Go] | 22 |
+| [2023](https://adventofcode.com/2023) | [C++] | 14 |
 
 [C]: https://en.wikipedia.org/wiki/C_(programming_language) "C"
+[C++]: https://isocpp.org/ "C++"
 [Go]: https://go.dev/ "Go"
 [Jupyter notebook]: https://jupyter.org/ "Jupyter notebook"
 [Python]: https://www.python.org/ "Python"
