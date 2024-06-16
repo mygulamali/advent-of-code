@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#define ulong unsigned long int
+
 namespace myg {
     class Problem {
     public:
