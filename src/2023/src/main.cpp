@@ -9,6 +9,7 @@
 #include "07.hpp"
 #include "08.hpp"
 #include "09.hpp"
+#include "11.hpp"
 
 using namespace std;
 using namespace myg;
@@ -57,6 +58,11 @@ int main() {
     Day09 d09("../../data/2023/09.txt");
     cout << "Part 1: " << d09.part_1() << endl;
     cout << "Part 2: " << d09.part_2() << endl;
+
+    cout << "Day 11" << endl;
+    Day11 d11("../../data/2023/11.txt");
+    cout << "Part 1: " << d11.part_1() << endl;
+    cout << "Part 2: " << d11.part_2(1000000) << endl;
 
     return 0;
 }
