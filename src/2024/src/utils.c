@@ -37,15 +37,13 @@ void free_lines(const size_t n_lines, char **lines) {
     free(lines);
 }
 
-char * str_dup(const char *str) {
-    char *ret = (char *) malloc(strlen(str) * sizeof(char));
-    strcpy(ret, str);
-    return ret;
-}
-
 char ** str_split(const char *str, const char *delimiter, size_t *n) {
     char **ret = (char **) malloc(sizeof(char *));
-    char *dup = str_dup(str);
+    char *dup = strdup(str);
+    if (dup == NULL) {
+        fprintf(stderr, "Error duplicating string\n");
+        exit(EXIT_FAILURE);
+    }
 
     size_t i = 0;
     char *token = strtok(dup, delimiter);
