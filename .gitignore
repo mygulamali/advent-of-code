@@ -195,6 +195,9 @@ cython_debug/
 *.app
 
 ## Project specific
+.vscode
+tmp
+
 src/2020/bin/
 
 src/2023/bin/*
