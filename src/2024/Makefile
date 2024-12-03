@@ -20,8 +20,6 @@ TEST_OBJECTS = $(patsubst %.c,%.o,$(TEST_SOURCES))
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
-run: tests main
-
 main: $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) $(SRC_DIR)/main.c -o $(BIN_DIR)/$@
 	$(BIN_DIR)/$@ $(PWD)/../../data/2024/
@@ -29,6 +27,9 @@ main: $(OBJECTS)
 tests: $(OBJECTS) $(TEST_OBJECTS)
 	$(CC) $(CFLAGS) $(LDFLAGS) -I$(TESTS_DIR) $(TEST_OBJECTS) $(OBJECTS) $(TESTS_DIR)/tests.c -o $(BIN_DIR)/$@
 	$(BIN_DIR)/$@
+
+leaks: tests
+	leaks --atExit -- $(BIN_DIR)/tests
 
 clean:
 	rm -rf $(OBJECTS) $(TEST_OBJECTS)
