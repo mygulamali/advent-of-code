@@ -17,3 +17,11 @@ void test_day_02_1(void **state) {
 
     assert_int_equal(result, 2);
 }
+
+void test_day_02_2(void **state) {
+    (void) state; /* unused */
+
+    const int32_t result = day_02_2(n_lines_02, lines_02);
+
+    assert_int_equal(result, 4);
+}

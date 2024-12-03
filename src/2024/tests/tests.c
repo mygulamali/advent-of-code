@@ -7,6 +7,7 @@ int main(void) {
         cmocka_unit_test(test_day_01_1),
         cmocka_unit_test(test_day_01_2),
         cmocka_unit_test(test_day_02_1),
+        cmocka_unit_test(test_day_02_2),
         cmocka_unit_test(test_day_03_1),
         cmocka_unit_test(test_day_03_2),
     };

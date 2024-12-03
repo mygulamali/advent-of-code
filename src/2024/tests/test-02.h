@@ -9,3 +9,4 @@
 #include "02.h"
 
 void test_day_02_1(void **state);
+void test_day_02_2(void **state);
