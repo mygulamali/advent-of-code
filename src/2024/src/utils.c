@@ -8,12 +8,20 @@ char ** read_lines(const char *filename, size_t *n_lines) {
     }
 
     char **lines = (char **) malloc(sizeof(char *));
+    if (lines == NULL) {
+        fprintf(stderr, "Error allocating memory\n");
+        exit(EXIT_FAILURE);
+    }
 
     size_t i = 0;
     char line[MAX_LINE_LENGTH];
     while (fgets(line, MAX_LINE_LENGTH - 1, fp)) {
         line[strcspn(line, "\n")] = 0;
         lines = (char **) realloc(lines, (i + 1) * sizeof(char *));
+        if (lines == NULL) {
+            fprintf(stderr, "Error allocating memory\n");
+            exit(EXIT_FAILURE);
+        }
         lines[i] = (char *) malloc((strlen(line) + 1) * sizeof(char));
         strncpy(lines[i], line, strlen(line) + 1);
         i++;
