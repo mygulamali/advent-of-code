@@ -25,40 +25,25 @@ int32_t find_number(
 }
 
 int32_t day_01_1(const size_t n_lines, char **lines) {
-    const size_t list_size = sizeof(int32_t) * n_lines;
-    int32_t *list_1 = (int32_t *) malloc(list_size);
-    int32_t *list_2 = (int32_t *) malloc(list_size);
-
-    if (list_1 == NULL || list_2 == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
+    int32_t list_a[n_lines];
+    int32_t list_b[n_lines];
 
     for (size_t i = 0; i < n_lines; i++)
-        sscanf(lines[i], "%d %d", &list_1[i], &list_2[i]);
+        sscanf(lines[i], "%d %d", &list_a[i], &list_b[i]);
 
-    qsort(list_1, n_lines, sizeof(int32_t), compare_ints);
-    qsort(list_2, n_lines, sizeof(int32_t), compare_ints);
+    qsort(list_a, n_lines, sizeof(int32_t), compare_ints);
+    qsort(list_b, n_lines, sizeof(int32_t), compare_ints);
 
     int32_t d_total = 0;
     for (size_t i = 0; i < n_lines; i++)
-        d_total += abs(list_1[i] - list_2[i]);
-
-    free(list_1);
-    free(list_2);
+        d_total += abs(list_a[i] - list_b[i]);
 
     return d_total;
 }
 
 int32_t day_01_2(const size_t n_lines, char **lines) {
-    const size_t list_size = sizeof(int32_t) * n_lines;
-    int32_t *list_l = (int32_t *) malloc(list_size);
-    int32_t *list_r = (int32_t *) malloc(list_size);
-
-    if (list_l == NULL || list_r == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
+    int32_t list_l[n_lines];
+    int32_t list_r[n_lines];
 
     for (size_t i = 0; i < n_lines; i++)
         sscanf(lines[i], "%d %d", &list_l[i], &list_r[i]);
@@ -83,9 +68,6 @@ int32_t day_01_2(const size_t n_lines, char **lines) {
         if (indx != -1)
             similarity_score += counts[indx].count * counts[indx].number;
     }
-
-    free(list_l);
-    free(list_r);
 
     return similarity_score;
 }

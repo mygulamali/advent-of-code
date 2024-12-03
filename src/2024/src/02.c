@@ -22,15 +22,11 @@ bool is_safe(const int32_t *report, const size_t n) {
     return true;
 }
 
-int32_t * slice(const int32_t *array, const size_t n, const size_t indx) {
-    int32_t *ret = (int32_t *) malloc((n - 1) * sizeof(int32_t));
-
+void subreport(int32_t *new_report, const int32_t *report, const size_t n, const size_t indx) {
     size_t j = 0;
     for (size_t i = 0; i < n; i++)
         if (i != indx)
-            ret[j++] = array[i];
-
-    return ret;
+            new_report[j++] = report[i];
 }
 
 int32_t day_02_1(const size_t n_lines, char **lines) {
@@ -46,6 +42,7 @@ int32_t day_02_1(const size_t n_lines, char **lines) {
 
         if (is_safe(report, n)) n_safe++;
 
+        for (size_t j = 0; j < n; j++) free(report_str[j]);
         free(report_str);
     }
 
@@ -67,17 +64,17 @@ int32_t day_02_2(const size_t n_lines, char **lines) {
             n_safe++;
         else {
             for (size_t j = 0; j < n; j++) {
-                int32_t *new_report = slice(report, n, j);
+                int32_t new_report[n - 1];
+                subreport(new_report, report, n, j);
 
                 if (is_safe(new_report, n - 1)) {
                     n_safe++;
                     break;
                 }
-
-                free(new_report);
             }
         }
 
+        for (size_t j = 0; j < n; j++) free(report_str[j]);
         free(report_str);
     }
 
