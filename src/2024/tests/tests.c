@@ -3,6 +3,7 @@
 #include "test-03.h"
 #include "test-04.h"
 #include "test-05.h"
+#include "test-06.h"
 #include "test-07.h"
 
 int main(void) {
@@ -16,6 +17,7 @@ int main(void) {
         cmocka_unit_test(test_day_04_1),
         cmocka_unit_test(test_day_04_2),
         cmocka_unit_test(test_day_05_1),
+        cmocka_unit_test(test_day_06_1),
         cmocka_unit_test(test_day_07_1),
     };
 

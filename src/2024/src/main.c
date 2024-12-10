@@ -6,6 +6,7 @@
 #include "03.h"
 #include "04.h"
 #include "05.h"
+#include "06.h"
 #include "07.h"
 
 int main(const int argc, const char *argv[]) {
@@ -65,6 +66,15 @@ int main(const int argc, const char *argv[]) {
     free(filename);
 
     printf("- Part 1: %d\n", day_05_1(n_lines, lines));
+    free_lines(n_lines, lines);
+
+    /* Day 06 */
+    printf("Day 6\n");
+    filename = concat(argv[1], "06.txt");
+    lines = read_lines(filename, &n_lines);
+    free(filename);
+
+    printf("- Part 1: %u\n", day_06_1(n_lines, lines));
     free_lines(n_lines, lines);
 
     /* Day 07 */
