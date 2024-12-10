@@ -6,6 +6,7 @@
 #include "03.h"
 #include "04.h"
 #include "05.h"
+#include "07.h"
 
 int main(const int argc, const char *argv[]) {
     if (argc != 2) {
@@ -64,5 +65,14 @@ int main(const int argc, const char *argv[]) {
     free(filename);
 
     printf("- Part 1: %d\n", day_05_1(n_lines, lines));
+    free_lines(n_lines, lines);
+
+    /* Day 07 */
+    printf("Day 7\n");
+    filename = concat(argv[1], "07.txt");
+    lines = read_lines(filename, &n_lines);
+    free(filename);
+
+    printf("- Part 1: %llu\n", day_07_1(n_lines, lines));
     free_lines(n_lines, lines);
 }
