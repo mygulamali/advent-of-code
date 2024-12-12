@@ -8,6 +8,7 @@
 #include "05.h"
 #include "06.h"
 #include "07.h"
+#include "11.h"
 
 int main(const int argc, const char *argv[]) {
     if (argc != 2) {
@@ -84,5 +85,16 @@ int main(const int argc, const char *argv[]) {
     free(filename);
 
     printf("- Part 1: %llu\n", day_07_1(n_lines, lines));
+    free_lines(n_lines, lines);
+
+    /* Day 11 */
+    printf("Day 11\n");
+    filename = concat(argv[1], "11.txt");
+    lines = read_lines(filename, &n_lines);
+    free(filename);
+
+    printf("- Part 1: %llu\n", day_11_1(n_lines, lines));
+    /* Commented out because it takes very long */
+    //printf("- Part 2: %llu\n", day_11_2(n_lines, lines));
     free_lines(n_lines, lines);
 }

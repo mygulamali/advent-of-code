@@ -5,6 +5,7 @@
 #include "test-05.h"
 #include "test-06.h"
 #include "test-07.h"
+#include "test-11.h"
 
 int main(void) {
     const struct CMUnitTest tests[] = {
@@ -19,6 +20,7 @@ int main(void) {
         cmocka_unit_test(test_day_05_1),
         cmocka_unit_test(test_day_06_1),
         cmocka_unit_test(test_day_07_1),
+        cmocka_unit_test(test_day_11_1),
     };
 
     return cmocka_run_group_tests(tests, NULL, NULL);
