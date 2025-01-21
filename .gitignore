@@ -198,6 +198,9 @@ cython_debug/
 .vscode
 tmp
 
+data/*/*
+!data/*/.keep
+
 src/2020/bin/
 
 src/2023/bin/*
