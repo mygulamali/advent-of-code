@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_LINE_LENGTH 8192
+#define MAX_LINE_LENGTH 100000
 
 char ** read_lines(const char *filename, size_t *n_lines);
 void free_lines(const size_t n_lines, char **lines);

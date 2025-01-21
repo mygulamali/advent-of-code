@@ -9,6 +9,7 @@
 #include "06.h"
 #include "07.h"
 #include "08.h"
+#include "09.h"
 #include "11.h"
 
 int main(const int argc, const char *argv[]) {
@@ -95,6 +96,15 @@ int main(const int argc, const char *argv[]) {
     free(filename);
 
     printf("- Part 1: %u\n", day_08_1(n_lines, lines));
+    free_lines(n_lines, lines);
+
+    /* Day 09 */
+    printf("Day 9\n");
+    filename = concat(argv[1], "09.txt");
+    lines = read_lines(filename, &n_lines);
+    free(filename);
+
+    printf("- Part 1: %lu\n", day_09_1(n_lines, lines));
     free_lines(n_lines, lines);
 
     /* Day 11 */
